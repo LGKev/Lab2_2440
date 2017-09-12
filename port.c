@@ -73,7 +73,7 @@ void PORT1_IRQHandler(){
 
     P1->OUT ^= BIT0;
 
-    for(h=0; h < 10000; h++);
+    for(h=0; h < 1000; h++);
 
     //P1->OUT = ~BIT0;
 
