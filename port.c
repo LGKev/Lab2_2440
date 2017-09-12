@@ -70,9 +70,11 @@ void GPIO_configure(void) {
 
 void PORT1_IRQHandler(){
     uint32_t h = 0;
-    for(h=0; h < 1000000; h++);
 
     P1->OUT ^= BIT0;
+
+    for(h=0; h < 10000; h++);
+
     //P1->OUT = ~BIT0;
 
     //PART 4. DEMO TO TA
@@ -86,7 +88,6 @@ void PORT1_IRQHandler(){
 //    else{
 //        //
 //    }
-    for(h=0; h < 100000; h++);
 
     P1->IFG &=  ~BIT1; //clear the flag you jackass
 
