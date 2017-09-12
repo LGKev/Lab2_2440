@@ -22,38 +22,35 @@ void main(void)
 
 
 //  <CONFIGURE_PORTS>
-   // GPIO_configure();
+   GPIO_configure();
 
 //  <CONFIGURE_TIMER>
 //  <ENBALE_GLOBAL_INTERRUPTS>
 //
-    P1->SEL0 = 0x0;//~BIT0;
-    P1->SEL1 = 0x0;//~BIT0;
-    P1->DIR |= BIT0 ;
-    P1->OUT |= BIT0;
+//    P1->SEL0 = 0x0;//~BIT0;
+//    P1->SEL1 = 0x0;//~BIT0;
+//    P1->DIR |= BIT0 ;
+//    P1->OUT |= BIT0;
 
-    uint16_t delays=0;
-    uint8_t test =0;
-        for(test =0; test<20; test++){
-            P1->OUT ^=BIT0;
-            for(delays = 0; delays < 10000; delays++);
-        }
+
 
 
     //Start of a test
     //set up left button as input
        //P1->SEL0 = 0x0;//~BIT1;
        //P1->SEL1 = 0x0;//~BIT1; don't negate because ~bit0 is 111110
-       P1->DIR |=   ~BIT1; // set as 0 for input
-       P1->REN |=   BIT1;
-       P1->OUT |=   BIT1;
-       P1->IFG &=  ~BIT1; //interrupt flag to be cleared first
-       P1->IES =   BIT1; //high to low
-       P1->IE  =   BIT1 ;
+//       P1->DIR |=   ~BIT1; // set as 0 for input
+//
+//       //line 41!!! WTF this is a problem.
+//       P1->REN |=   BIT1;
+//       P1->OUT |=   BIT1;
+//       P1->IFG &=  ~BIT1; //interrupt flag to be cleared first
+//       P1->IES =   BIT1; //high to low
+//       P1->IE  =   BIT1 ;
 
 
 
-       NVIC_EnableIRQ( PORT1_IRQn);
+      // NVIC_EnableIRQ( PORT1_IRQn);
 
        __enable_irq();
 

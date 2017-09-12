@@ -22,5 +22,15 @@
 void GPIO_configure(void);
 
 
+/*Takes no parameters
+ * Returns nothing
+ *
+ * Used to make sure the red LED1 on board
+ * is set up correctly
+ * toggles 20 times.
+ * */
+void testLED1(void);
+void testRGB(void);
+
 
 #endif /* PORT_H_ */
