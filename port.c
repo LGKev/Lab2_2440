@@ -18,7 +18,7 @@ void GPIO_configure(void) {
     P1->SEL0 &= ~BIT0;
     P1->SEL1 &= ~BIT0;
     P1->DIR  |=  BIT0;
-    P1->OUT  &= ~BIT0;  //on
+    P1->OUT  &= ~BIT0;  //OFF
 
 
 //    /* Configure RGB led */
@@ -72,7 +72,7 @@ void PORT1_IRQHandler(){
     uint32_t h = 0;
 
     P1->OUT ^= BIT0;
-    for(h=0; h < 100000; h++);
+    for(h=0; h < 1000; h++)
     P1->IFG &=  ~BIT1; //clear the flag you jackass
 
     //P1->OUT = ~BIT0;
