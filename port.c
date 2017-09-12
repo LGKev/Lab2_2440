@@ -72,8 +72,8 @@ void PORT1_IRQHandler(){
     uint32_t h = 0;
 
     P1->OUT ^= BIT0;
-
-    for(h=0; h < 1000; h++);
+    for(h=0; h < 100000; h++);
+    P1->IFG &=  ~BIT1; //clear the flag you jackass
 
     //P1->OUT = ~BIT0;
 
@@ -89,7 +89,6 @@ void PORT1_IRQHandler(){
 //        //
 //    }
 
-    P1->IFG &=  ~BIT1; //clear the flag you jackass
 
     //toggle the LED
 }

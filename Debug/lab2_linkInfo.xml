@@ -2,12 +2,12 @@
 <link_info>
    <banner>TI ARM Linker Unix v16.9.3.LTS</banner>
    <copyright>Copyright (c) 1996-2017 Texas Instruments Incorporated</copyright>
-   <link_time>0x59b80324</link_time>
+   <link_time>0x59b8059b</link_time>
    <link_errors>0x0</link_errors>
    <output_file>lab2.out</output_file>
    <entry_point>
       <name>_c_int00</name>
-      <address>0x7ad</address>
+      <address>0x7b1</address>
    </entry_point>
    <input_file_list>
       <input_file id="fl-2">
@@ -168,116 +168,116 @@
          <name>.text</name>
          <load_address>0x52c</load_address>
          <run_address>0x52c</run_address>
-         <size>0x10c</size>
+         <size>0x110</size>
          <input_file_ref idref="fl-4"/>
       </object_component>
       <object_component id="oc-3b">
          <name>.text</name>
-         <load_address>0x638</load_address>
-         <run_address>0x638</run_address>
+         <load_address>0x63c</load_address>
+         <run_address>0x63c</run_address>
          <size>0x9c</size>
          <input_file_ref idref="fl-c6"/>
       </object_component>
       <object_component id="oc-5f">
          <name>.text</name>
-         <load_address>0x6d4</load_address>
-         <run_address>0x6d4</run_address>
+         <load_address>0x6d8</load_address>
+         <run_address>0x6d8</run_address>
          <size>0x70</size>
          <input_file_ref idref="fl-cd"/>
       </object_component>
       <object_component id="oc-14">
          <name>.text:decompress:lzss</name>
-         <load_address>0x744</load_address>
-         <run_address>0x744</run_address>
+         <load_address>0x748</load_address>
+         <run_address>0x748</run_address>
          <size>0x68</size>
          <input_file_ref idref="fl-c2"/>
       </object_component>
       <object_component id="oc-26">
          <name>.text</name>
-         <load_address>0x7ac</load_address>
-         <run_address>0x7ac</run_address>
+         <load_address>0x7b0</load_address>
+         <run_address>0x7b0</run_address>
          <size>0x54</size>
          <input_file_ref idref="fl-c1"/>
       </object_component>
       <object_component id="oc-6b">
          <name>.text</name>
-         <load_address>0x800</load_address>
-         <run_address>0x800</run_address>
+         <load_address>0x804</load_address>
+         <run_address>0x804</run_address>
          <size>0x54</size>
          <input_file_ref idref="fl-c5"/>
       </object_component>
       <object_component id="oc-9c">
          <name>.text</name>
-         <load_address>0x854</load_address>
-         <run_address>0x854</run_address>
+         <load_address>0x858</load_address>
+         <run_address>0x858</run_address>
          <size>0x4c</size>
          <input_file_ref idref="fl-ce"/>
       </object_component>
       <object_component id="oc-65">
          <name>.text</name>
-         <load_address>0x8a0</load_address>
-         <run_address>0x8a0</run_address>
+         <load_address>0x8a4</load_address>
+         <run_address>0x8a4</run_address>
          <size>0x18</size>
          <input_file_ref idref="fl-cc"/>
       </object_component>
       <object_component id="oc-ec">
          <name>.text</name>
-         <load_address>0x8b8</load_address>
-         <run_address>0x8b8</run_address>
+         <load_address>0x8bc</load_address>
+         <run_address>0x8bc</run_address>
          <size>0x14</size>
          <input_file_ref idref="fl-cb"/>
       </object_component>
       <object_component id="oc-1a">
          <name>.text:decompress:none</name>
-         <load_address>0x8cc</load_address>
-         <run_address>0x8cc</run_address>
+         <load_address>0x8d0</load_address>
+         <run_address>0x8d0</run_address>
          <size>0xe</size>
          <input_file_ref idref="fl-c3"/>
       </object_component>
       <object_component id="oc-75">
          <name>.text</name>
-         <load_address>0x8da</load_address>
-         <run_address>0x8da</run_address>
+         <load_address>0x8de</load_address>
+         <run_address>0x8de</run_address>
          <size>0xe</size>
          <input_file_ref idref="fl-5"/>
       </object_component>
       <object_component id="oc-59">
          <name>.text</name>
-         <load_address>0x8e8</load_address>
-         <run_address>0x8e8</run_address>
+         <load_address>0x8ec</load_address>
+         <run_address>0x8ec</run_address>
          <size>0x4</size>
          <input_file_ref idref="fl-c9"/>
       </object_component>
       <object_component id="oc-53">
          <name>.text</name>
-         <load_address>0x8ec</load_address>
-         <run_address>0x8ec</run_address>
+         <load_address>0x8f0</load_address>
+         <run_address>0x8f0</run_address>
          <size>0x2</size>
          <input_file_ref idref="fl-c8"/>
       </object_component>
       <object_component id="oc-a2">
          <name>.text</name>
-         <load_address>0x8ee</load_address>
-         <run_address>0x8ee</run_address>
+         <load_address>0x8f2</load_address>
+         <run_address>0x8f2</run_address>
          <size>0x2</size>
          <input_file_ref idref="fl-cf"/>
       </object_component>
       <object_component id="oc-13c">
          <name>.cinit..data.load</name>
-         <load_address>0x8f0</load_address>
-         <run_address>0x8f0</run_address>
+         <load_address>0x8f8</load_address>
+         <run_address>0x8f8</run_address>
          <size>0x15</size>
       </object_component>
       <object_component id="oc-13a">
          <name>__TI_handler_table</name>
-         <load_address>0x908</load_address>
-         <run_address>0x908</run_address>
+         <load_address>0x910</load_address>
+         <run_address>0x910</run_address>
          <size>0x8</size>
       </object_component>
       <object_component id="oc-13b">
          <name>__TI_cinit_table</name>
-         <load_address>0x910</load_address>
-         <run_address>0x910</run_address>
+         <load_address>0x918</load_address>
+         <run_address>0x918</run_address>
          <size>0x8</size>
       </object_component>
       <object_component id="oc-117">
@@ -1845,7 +1845,7 @@
          <name>.text</name>
          <load_address>0xe4</load_address>
          <run_address>0xe4</run_address>
-         <size>0x80c</size>
+         <size>0x810</size>
          <contents>
             <object_component_ref idref="oc-bd"/>
             <object_component_ref idref="oc-aa"/>
@@ -1874,8 +1874,8 @@
       </logical_group>
       <logical_group id="lg-6" display="no" color="cyan">
          <name>.cinit</name>
-         <load_address>0x8f0</load_address>
-         <run_address>0x8f0</run_address>
+         <load_address>0x8f8</load_address>
+         <run_address>0x8f8</run_address>
          <size>0x28</size>
          <contents>
             <object_component_ref idref="oc-13c"/>
@@ -2272,7 +2272,7 @@
          <name>SEGMENT_0</name>
          <load_address>0x0</load_address>
          <run_address>0x0</run_address>
-         <size>0x918</size>
+         <size>0x920</size>
          <flags>0x5</flags>
          <contents>
             <logical_group_ref idref="lg-3"/>
@@ -2305,8 +2305,8 @@
          <page_id>0x0</page_id>
          <origin>0x0</origin>
          <length>0x40000</length>
-         <used_space>0x918</used_space>
-         <unused_space>0x3f6e8</unused_space>
+         <used_space>0x91c</used_space>
+         <unused_space>0x3f6e4</unused_space>
          <attributes>RX</attributes>
          <usage_details>
             <allocated_space>
@@ -2321,17 +2321,21 @@
             </allocated_space>
             <allocated_space>
                <start_address>0xe4</start_address>
-               <size>0x80c</size>
+               <size>0x810</size>
                <logical_group_ref idref="lg-4"/>
             </allocated_space>
+            <available_space>
+               <start_address>0x8f4</start_address>
+               <size>0x4</size>
+            </available_space>
             <allocated_space>
-               <start_address>0x8f0</start_address>
+               <start_address>0x8f8</start_address>
                <size>0x28</size>
                <logical_group_ref idref="lg-6"/>
             </allocated_space>
             <available_space>
-               <start_address>0x918</start_address>
-               <size>0x3f6e8</size>
+               <start_address>0x920</start_address>
+               <size>0x3f6e0</size>
             </available_space>
          </usage_details>
       </memory_area>
@@ -2402,7 +2406,7 @@
          <name>__TI_cinit_table</name>
          <cprec>
             <name>.data</name>
-            <load_address>0x8f0</load_address>
+            <load_address>0x8f8</load_address>
             <load_size>0x15</load_size>
             <run_address>0x20000000</run_address>
             <run_size>0x1c</run_size>
@@ -2428,19 +2432,19 @@
       </symbol>
       <symbol id="sm-2">
          <name>__TI_CINIT_Base</name>
-         <value>0x910</value>
+         <value>0x918</value>
       </symbol>
       <symbol id="sm-3">
          <name>__TI_CINIT_Limit</name>
-         <value>0x918</value>
+         <value>0x920</value>
       </symbol>
       <symbol id="sm-4">
          <name>__TI_Handler_Table_Base</name>
-         <value>0x908</value>
+         <value>0x910</value>
       </symbol>
       <symbol id="sm-5">
          <name>__TI_Handler_Table_Limit</name>
-         <value>0x910</value>
+         <value>0x918</value>
       </symbol>
       <symbol id="sm-6">
          <name>binit</name>
@@ -2479,387 +2483,387 @@
          <value>0x43d</value>
          <object_component_ref idref="oc-aa"/>
       </symbol>
-      <symbol id="sm-76">
+      <symbol id="sm-77">
          <name>PORT1_IRQHandler</name>
          <value>0x5db</value>
          <object_component_ref idref="oc-7b"/>
       </symbol>
-      <symbol id="sm-77">
+      <symbol id="sm-78">
          <name>GPIO_configure</name>
          <value>0x559</value>
          <object_component_ref idref="oc-7b"/>
       </symbol>
-      <symbol id="sm-8c">
-         <name>Reset_Handler</name>
-         <value>0x8db</value>
-         <object_component_ref idref="oc-75"/>
-      </symbol>
       <symbol id="sm-8d">
-         <name>Default_Handler</name>
-         <value>0x8e7</value>
+         <name>Reset_Handler</name>
+         <value>0x8df</value>
          <object_component_ref idref="oc-75"/>
       </symbol>
       <symbol id="sm-8e">
+         <name>Default_Handler</name>
+         <value>0x8eb</value>
+         <object_component_ref idref="oc-75"/>
+      </symbol>
+      <symbol id="sm-8f">
          <name>interruptVectors</name>
          <value>0x0</value>
          <object_component_ref idref="oc-2c"/>
       </symbol>
-      <symbol id="sm-d4">
+      <symbol id="sm-d5">
          <name>SystemInit</name>
          <value>0x359</value>
          <object_component_ref idref="oc-bd"/>
       </symbol>
-      <symbol id="sm-d5">
+      <symbol id="sm-d6">
          <name>SystemCoreClockUpdate</name>
          <value>0xe5</value>
          <object_component_ref idref="oc-bd"/>
       </symbol>
-      <symbol id="sm-d6">
+      <symbol id="sm-d7">
          <name>SystemCoreClock</name>
          <value>0x20000018</value>
          <object_component_ref idref="oc-f8"/>
       </symbol>
-      <symbol id="sm-e8">
+      <symbol id="sm-e9">
          <name>_c_int00</name>
-         <value>0x7ad</value>
+         <value>0x7b1</value>
          <object_component_ref idref="oc-26"/>
       </symbol>
-      <symbol id="sm-e9">
+      <symbol id="sm-ea">
          <name>__stack</name>
          <value>0x2000fe00</value>
          <object_component_ref idref="oc-2f"/>
       </symbol>
-      <symbol id="sm-107">
+      <symbol id="sm-108">
          <name>__TI_decompress_lzss</name>
-         <value>0x745</value>
+         <value>0x749</value>
          <object_component_ref idref="oc-14"/>
       </symbol>
-      <symbol id="sm-11e">
+      <symbol id="sm-11f">
          <name>__TI_decompress_none</name>
-         <value>0x8cd</value>
+         <value>0x8d1</value>
          <object_component_ref idref="oc-1a"/>
       </symbol>
-      <symbol id="sm-145">
-         <name>C$$EXIT</name>
-         <value>0x801</value>
-         <object_component_ref idref="oc-6b"/>
-      </symbol>
       <symbol id="sm-146">
-         <name>abort</name>
+         <name>C$$EXIT</name>
          <value>0x805</value>
          <object_component_ref idref="oc-6b"/>
       </symbol>
       <symbol id="sm-147">
-         <name>exit</name>
-         <value>0x80d</value>
+         <name>abort</name>
+         <value>0x809</value>
          <object_component_ref idref="oc-6b"/>
       </symbol>
       <symbol id="sm-148">
+         <name>exit</name>
+         <value>0x811</value>
+         <object_component_ref idref="oc-6b"/>
+      </symbol>
+      <symbol id="sm-149">
          <name>__TI_dtors_ptr</name>
          <value>0x20000004</value>
          <object_component_ref idref="oc-b2"/>
       </symbol>
-      <symbol id="sm-149">
+      <symbol id="sm-14a">
          <name>__TI_cleanup_ptr</name>
          <value>0x20000000</value>
          <object_component_ref idref="oc-b2"/>
       </symbol>
-      <symbol id="sm-14a">
+      <symbol id="sm-14b">
          <name>__TI_enable_exit_profile_output</name>
          <value>0x20000008</value>
          <object_component_ref idref="oc-b2"/>
       </symbol>
-      <symbol id="sm-165">
-         <name>memcpy</name>
-         <value>0x639</value>
-         <object_component_ref idref="oc-3b"/>
-      </symbol>
       <symbol id="sm-166">
-         <name>__aeabi_memcpy</name>
-         <value>0x639</value>
+         <name>memcpy</name>
+         <value>0x63d</value>
          <object_component_ref idref="oc-3b"/>
       </symbol>
       <symbol id="sm-167">
-         <name>__aeabi_memcpy8</name>
-         <value>0x639</value>
+         <name>__aeabi_memcpy</name>
+         <value>0x63d</value>
          <object_component_ref idref="oc-3b"/>
       </symbol>
       <symbol id="sm-168">
-         <name>__aeabi_memcpy4</name>
-         <value>0x639</value>
+         <name>__aeabi_memcpy8</name>
+         <value>0x63d</value>
          <object_component_ref idref="oc-3b"/>
       </symbol>
-      <symbol id="sm-173">
+      <symbol id="sm-169">
+         <name>__aeabi_memcpy4</name>
+         <value>0x63d</value>
+         <object_component_ref idref="oc-3b"/>
+      </symbol>
+      <symbol id="sm-174">
          <name>__mpu_init</name>
-         <value>0x8ed</value>
+         <value>0x8f1</value>
          <object_component_ref idref="oc-53"/>
       </symbol>
-      <symbol id="sm-17d">
+      <symbol id="sm-17e">
          <name>_system_pre_init</name>
-         <value>0x8e9</value>
+         <value>0x8ed</value>
          <object_component_ref idref="oc-59"/>
       </symbol>
-      <symbol id="sm-185">
+      <symbol id="sm-186">
          <name>main_func_sp</name>
          <value>0x20000014</value>
          <object_component_ref idref="oc-71"/>
       </symbol>
-      <symbol id="sm-19e">
+      <symbol id="sm-19f">
          <name>_nop</name>
-         <value>0x8c7</value>
+         <value>0x8cb</value>
          <object_component_ref idref="oc-ec"/>
       </symbol>
-      <symbol id="sm-19f">
+      <symbol id="sm-1a0">
          <name>_lock</name>
          <value>0x2000000c</value>
          <object_component_ref idref="oc-b5"/>
       </symbol>
-      <symbol id="sm-1a0">
+      <symbol id="sm-1a1">
          <name>_unlock</name>
          <value>0x20000010</value>
          <object_component_ref idref="oc-b5"/>
       </symbol>
-      <symbol id="sm-1a1">
-         <name>_register_lock</name>
-         <value>0x8bf</value>
-         <object_component_ref idref="oc-ec"/>
-      </symbol>
       <symbol id="sm-1a2">
-         <name>_register_unlock</name>
-         <value>0x8b9</value>
+         <name>_register_lock</name>
+         <value>0x8c3</value>
          <object_component_ref idref="oc-ec"/>
       </symbol>
-      <symbol id="sm-1b6">
+      <symbol id="sm-1a3">
+         <name>_register_unlock</name>
+         <value>0x8bd</value>
+         <object_component_ref idref="oc-ec"/>
+      </symbol>
+      <symbol id="sm-1b7">
          <name>_args_main</name>
-         <value>0x8a1</value>
+         <value>0x8a5</value>
          <object_component_ref idref="oc-65"/>
       </symbol>
-      <symbol id="sm-1e0">
+      <symbol id="sm-1e1">
          <name>__TI_auto_init</name>
-         <value>0x6d5</value>
+         <value>0x6d9</value>
          <object_component_ref idref="oc-5f"/>
       </symbol>
-      <symbol id="sm-1fa">
+      <symbol id="sm-1fb">
          <name>copy_in</name>
-         <value>0x855</value>
+         <value>0x859</value>
          <object_component_ref idref="oc-9c"/>
       </symbol>
-      <symbol id="sm-204">
+      <symbol id="sm-205">
          <name>_system_post_cinit</name>
-         <value>0x8ef</value>
+         <value>0x8f3</value>
          <object_component_ref idref="oc-a2"/>
       </symbol>
-      <symbol id="sm-205">
+      <symbol id="sm-206">
          <name>__TI_static_base__</name>
          <value>0x0</value>
       </symbol>
-      <symbol id="sm-208">
+      <symbol id="sm-209">
          <name>SHT$$INIT_ARRAY$$Limit</name>
          <value>0x0</value>
       </symbol>
-      <symbol id="sm-209">
+      <symbol id="sm-20a">
          <name>SHT$$INIT_ARRAY$$Base</name>
          <value>0x0</value>
       </symbol>
-      <symbol id="sm-20a">
-         <name>NMI_Handler</name>
-         <value>0x8e7</value>
-      </symbol>
       <symbol id="sm-20b">
-         <name>HardFault_Handler</name>
-         <value>0x8e7</value>
+         <name>NMI_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-20c">
-         <name>MemManage_Handler</name>
-         <value>0x8e7</value>
+         <name>HardFault_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-20d">
-         <name>BusFault_Handler</name>
-         <value>0x8e7</value>
+         <name>MemManage_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-20e">
-         <name>UsageFault_Handler</name>
-         <value>0x8e7</value>
+         <name>BusFault_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-20f">
-         <name>SVC_Handler</name>
-         <value>0x8e7</value>
+         <name>UsageFault_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-210">
-         <name>DebugMon_Handler</name>
-         <value>0x8e7</value>
+         <name>SVC_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-211">
-         <name>PendSV_Handler</name>
-         <value>0x8e7</value>
+         <name>DebugMon_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-212">
-         <name>SysTick_Handler</name>
-         <value>0x8e7</value>
+         <name>PendSV_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-213">
-         <name>PSS_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>SysTick_Handler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-214">
-         <name>CS_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>PSS_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-215">
-         <name>PCM_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>CS_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-216">
-         <name>WDT_A_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>PCM_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-217">
-         <name>FPU_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>WDT_A_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-218">
-         <name>FLCTL_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>FPU_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-219">
-         <name>COMP_E0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>FLCTL_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21a">
-         <name>COMP_E1_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>COMP_E0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21b">
-         <name>TA0_0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>COMP_E1_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21c">
-         <name>TA0_N_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA0_0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21d">
-         <name>TA1_0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA0_N_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21e">
-         <name>TA1_N_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA1_0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-21f">
-         <name>TA2_0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA1_N_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-220">
-         <name>TA2_N_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA2_0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-221">
-         <name>TA3_0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA2_N_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-222">
-         <name>TA3_N_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA3_0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-223">
-         <name>EUSCIA0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>TA3_N_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-224">
-         <name>EUSCIA1_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIA0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-225">
-         <name>EUSCIA2_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIA1_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-226">
-         <name>EUSCIA3_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIA2_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-227">
-         <name>EUSCIB0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIA3_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-228">
-         <name>EUSCIB1_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIB0_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-229">
-         <name>EUSCIB2_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIB1_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22a">
-         <name>EUSCIB3_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIB2_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22b">
-         <name>ADC14_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>EUSCIB3_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22c">
-         <name>T32_INT1_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>ADC14_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22d">
-         <name>T32_INT2_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>T32_INT1_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22e">
-         <name>T32_INTC_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>T32_INT2_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-22f">
-         <name>AES256_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>T32_INTC_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-230">
-         <name>RTC_C_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>AES256_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-231">
-         <name>DMA_ERR_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>RTC_C_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-232">
-         <name>DMA_INT3_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>DMA_ERR_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-233">
-         <name>DMA_INT2_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>DMA_INT3_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-234">
-         <name>DMA_INT1_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>DMA_INT2_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-235">
-         <name>DMA_INT0_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>DMA_INT1_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-236">
+         <name>DMA_INT0_IRQHandler</name>
+         <value>0x8eb</value>
+      </symbol>
+      <symbol id="sm-237">
          <name>PORT1_IRQHandler</name>
          <value>0x5db</value>
       </symbol>
-      <symbol id="sm-237">
-         <name>PORT2_IRQHandler</name>
-         <value>0x8e7</value>
-      </symbol>
       <symbol id="sm-238">
-         <name>PORT3_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>PORT2_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-239">
-         <name>PORT4_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>PORT3_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-23a">
-         <name>PORT5_IRQHandler</name>
-         <value>0x8e7</value>
+         <name>PORT4_IRQHandler</name>
+         <value>0x8eb</value>
       </symbol>
       <symbol id="sm-23b">
+         <name>PORT5_IRQHandler</name>
+         <value>0x8eb</value>
+      </symbol>
+      <symbol id="sm-23c">
          <name>PORT6_IRQHandler</name>
-         <value>0x8e7</value>
+         <value>0x8eb</value>
       </symbol>
    </symbol_table>
    <title>Link successful</title>
