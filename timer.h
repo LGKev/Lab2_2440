@@ -9,5 +9,10 @@
 #define TIMER_H_
 
 
+void ISR-FUNCTION-TIMER(void);
+
+void timer_a0_config(void);
+
+
 
 #endif /* TIMER_H_ */
