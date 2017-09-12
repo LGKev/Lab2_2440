@@ -49,16 +49,18 @@ void GPIO_configure(void)
     P1->IFG &= ~BIT1; //interrupt flag to be cleared first
     P1->IES |= BIT1; //high to low
     P1->IE |= BIT1;
-//
-////    /* LEFT button configure */
-//    P1->SEL0 &= ~BIT4;
-//    P1->SEL1 &= ~BIT4;
-//    P1->DIR |=   BIT4;
-//    P1->REN |=   BIT4;
-//    P1->OUT |=   BIT4;
-//    P1->IFG &=  ~BIT4; //interrupt flag to be cleared first
-//    P1->IES =   BIT4; //high to low
-//    P1->IE  =   BIT4;
+
+
+   /* LEFT button configure */
+    P1->SEL0 &= ~BIT4;
+    P1->SEL1 &= ~BIT4;
+    P1->DIR &=  ~BIT4;
+    P1->REN |=   BIT4;
+    P1->OUT |=   BIT4;
+    P1->IFG &=  ~BIT4; //interrupt flag to be cleared first
+    P1->IES |=   BIT4; //high to low
+    P1->IE  |=   BIT4;
+
 //
 //    /* Configure Latency Test Output Pin */
 //  P1->SEL0 = ???;
@@ -88,6 +90,7 @@ void PORT1_IRQHandler()
  else if(P1IFG & BIT4){
 
      testRGB();
+         P1->IFG &= ~BIT4;
  }
     else{
         //
@@ -112,8 +115,8 @@ void testRGB(){
     uint32_t    delays = 0;
     uint8_t index =0;
     for(index =0; index < 8; index ++){
-        P2->OUT |= color;
-   for(delays = 0; delays < 10000; delays++);
+        P2->OUT ^= BIT1|BIT2| BIT3;
+   for(delays = 0; delays < 40000; delays++);
     }
-    P2->OUT = 0x0; //clear it!
+   // P2->OUT = 0x0; //clear it!
 }

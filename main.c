@@ -15,44 +15,14 @@ void main(void)
 
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 
-//    <DISABLE_WATCHDOG>
-//
-//
-//
+    GPIO_configure();
 
+    __enable_irq();
 
-//  <CONFIGURE_PORTS>
-   GPIO_configure();
 
 //  <CONFIGURE_TIMER>
-//  <ENBALE_GLOBAL_INTERRUPTS>
-//
-//    P1->SEL0 = 0x0;//~BIT0;
-//    P1->SEL1 = 0x0;//~BIT0;
-//    P1->DIR |= BIT0 ;
-//    P1->OUT |= BIT0;
 
 
-
-
-    //Start of a test
-    //set up left button as input
-       //P1->SEL0 = 0x0;//~BIT1;
-       //P1->SEL1 = 0x0;//~BIT1; don't negate because ~bit0 is 111110
-//       P1->DIR |=   ~BIT1; // set as 0 for input
-//
-//       //line 41!!! WTF this is a problem.
-//       P1->REN |=   BIT1;
-//       P1->OUT |=   BIT1;
-//       P1->IFG &=  ~BIT1; //interrupt flag to be cleared first
-//       P1->IES =   BIT1; //high to low
-//       P1->IE  =   BIT1 ;
-
-
-
-      // NVIC_EnableIRQ( PORT1_IRQn);
-
-       __enable_irq();
 
 
     while (1){
