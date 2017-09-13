@@ -8,6 +8,10 @@
 // Configure the GPIO
 #include "port.h"
 #include "msp.h"
+#include <stdint.h>
+
+volatile extern uint8_t hissa;
+
 
 void GPIO_configure(void)
 {
@@ -62,11 +66,11 @@ void GPIO_configure(void)
     P1->IE  |=   BIT4;
 
 //
-//    /* Configure Latency Test Output Pin */
-//  P1->SEL0 = ???;
-//  P1->SEL1 = ???;
-//  P1->DIR = ???;
-//  P1->OUT = ???;
+    /* Configure Latency Test Output Pin */
+  P1->SEL0 &= ~BIT7; //
+  P1->SEL1 &= ~BIT7;
+  P1->DIR |= BIT7;
+  P1->OUT |= BIT7;
 //
     /* Enable Interrupts in the NVIC */
     NVIC_EnableIRQ(PORT1_IRQn);
@@ -74,6 +78,7 @@ void GPIO_configure(void)
 
 void PORT1_IRQHandler()
 {
+    //P1->OUT &= ~BIT7; //make it low , test pin
     uint32_t h = 0;
 
 
@@ -84,19 +89,22 @@ void PORT1_IRQHandler()
  if(P1IFG & BIT1){
         //DO STUFF FOR RIGHT BUTTON
         P1->OUT ^= BIT0;
-        for (h = 0; h < 10000; h++)
+        for (h = 0; h < 10000; h++);
             P1->IFG &= ~BIT1; //clear the flag you jackass
+       hissa--;
     }
  else if(P1IFG & BIT4){
 
      testRGB();
          P1->IFG &= ~BIT4;
+         hissa++;
  }
     else{
         //
     }
 
     //toggle the LED
+ P1->OUT &= ~BIT7;
 }
 
 void testLED1(){

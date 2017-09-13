@@ -10,9 +10,13 @@
  * */
 
 
+
+volatile  uint8_t hissa = 0;
+
 void main(void)
 {
-
+hissa =20;
+    uint8_t test =54;
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 
     GPIO_configure();
@@ -22,13 +26,17 @@ void main(void)
 
 //  <CONFIGURE_TIMER>
 
-
-
+//    P1->SEL0 &= ~BIT7;
+//    P1->SEL1 &=~BIT7;
+//    P1->DIR |= BIT7;
+//    P1->OUT |= BIT7;
 
     while (1){
 //        if(P1->IN == ~BIT1){
 //            P1->OUT = BIT0;
 //        }
+        //P1->OUT ^= BIT7;
+        P1->OUT |= BIT7;
     }
 }
 
