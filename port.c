@@ -81,7 +81,7 @@ void PORT1_IRQHandler()
     //P1->OUT &= ~BIT7; //make it low , test pin
     uint32_t h = 0;
 
-
+    hissa++;
 
     //P1->OUT = ~BIT0;
 

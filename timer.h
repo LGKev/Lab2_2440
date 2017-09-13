@@ -11,7 +11,7 @@
 
 //void ISR-FUNCTION-TIMER(void);
 
-//void timer_a0_config(void);
+void timer_a0_config(void);
 
 
 

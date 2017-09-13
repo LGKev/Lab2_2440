@@ -11,7 +11,7 @@
 
 
 
-volatile  uint8_t hissa = 0;
+volatile  uint8_t hissa;
 
 void main(void)
 {
