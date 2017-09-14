@@ -37,6 +37,7 @@ void timer_a0_config(){
 }
 
 void TA0_0_IRQHandler(){
-
+    //everytime the timer compare capture, this code execcutes
+    P1->OUT ^= BIT0; //blink red led.
 
 }

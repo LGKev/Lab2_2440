@@ -21,6 +21,8 @@ void main(void)
 
     GPIO_configure();
 
+    timer_a0_config();
+
     __enable_irq();
 
 
