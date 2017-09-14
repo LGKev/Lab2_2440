@@ -11,11 +11,11 @@
 
 
 
-volatile  uint8_t hissa;
+//volatile  uint8_t hissa;
 
 void main(void)
 {
-hissa =20;
+//    hissa =20;
     uint8_t test =54;
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 

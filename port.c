@@ -29,7 +29,7 @@ void GPIO_configure(void)
     P2->SEL0 &= ~(BIT0 | BIT1 | BIT2);
     P2->SEL1 &= ~(BIT0 | BIT1 | BIT2);
     P2->DIR  |= (BIT0 | BIT1 | BIT2);
-    P2->OUT  &= (BIT0 | BIT1 | BIT2); //HIGH
+    P2->OUT  |= (BIT0 | BIT1 | BIT2); //HIGH
 
     testRGB();
 
@@ -81,30 +81,34 @@ void PORT1_IRQHandler()
     //P1->OUT &= ~BIT7; //make it low , test pin
     uint32_t h = 0;
 
-    hissa++;
 
     //P1->OUT = ~BIT0;
 
     //PART 4. DEMO TO TA
  if(P1IFG & BIT1){
         //DO STUFF FOR RIGHT BUTTON
+
         P1->OUT ^= BIT0;
-        for (h = 0; h < 10000; h++);
-            P1->IFG &= ~BIT1; //clear the flag you jackass
-       hissa--;
+        for (h = 0; h < 305000; h++){
+
+        }
+        P1->IFG &= ~BIT1; //clear the flag you jackass
+
+//       hissa--;
     }
  else if(P1IFG & BIT4){
+     P1->IFG &= ~BIT4;
 
      testRGB();
-         P1->IFG &= ~BIT4;
-         hissa++;
+//         hissa++;
  }
     else{
         //
     }
 
     //toggle the LED
- P1->OUT &= ~BIT7;
+ //THIS IS CAUSING THE DOUBLE FLIP?
+// P1->OUT &= ~BIT7;
 }
 
 void testLED1(){
