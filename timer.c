@@ -18,8 +18,8 @@ void timer_a0_config(){
     TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
     TIMER_A0->CTL |= (TIMER_A_CTL_MC_OFS + TIMER_A_CTL_MC__UP )|(TIMER_A_CTL_SSEL_OFS + TIMER_A_CTL_TASSEL_2 ) | (TIMER_A_CTL_IE_OFS + TIMER_A_CTL_IE );     //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
     TIMER_A0->CTL |= TIMER_A_CTL_ID_OFS + (TIMER_A_CTL_ID_0); //DIVIDE BY 1
-    TIMER_A0->CTL = (TIMER_A_CTL_IFG_OFS + TIMER_A_CTL_IFG );//CLEAR ANY FLAGS
-    TIMER_A0->CCR[0] = 10000;    // Value to count to, from lab questions
+    TIMER_A0->CTL &= (TIMER_A_CTL_IFG_OFS) + ~(TIMER_A_CTL_IFG );//CLEAR ANY FLAGS ,totally worked!!! this was the correct way to negate
+    TIMER_A0->CCR[0] = 10000000;    // Value to count to, from lab questions
     TIMER_A0->CCTL[0] = TIMER_A_CCTLN_CCIE_OFS + TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
     //line 20 might be wrong because i just want the capture compare flag set as 1 to enable that....
     //and the CCIF is if a pending interrupt is there
@@ -39,5 +39,7 @@ void timer_a0_config(){
 void TA0_0_IRQHandler(){
     //everytime the timer compare capture, this code execcutes
     P1->OUT ^= BIT0; //blink red led.
-
+//    TIMER_A_CTL[] //CLEAR THE FLG!
+    TIMER_A0->CCTL[0] &= ~CCIFG;
+    TIMER_A0->CTL &= (TIMER_A_CTL_IFG_OFS) + ~(TIMER_A_CTL_IFG );//CLEAR ANY FLAGS ,totally worked!!! this was the correct way to negate
 }

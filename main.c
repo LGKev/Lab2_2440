@@ -38,7 +38,7 @@ void main(void)
 //            P1->OUT = BIT0;
 //        }
         //P1->OUT ^= BIT7;
-        P1->OUT |= BIT7;
+        P1->OUT ^= BIT7;
     }
 }
 
