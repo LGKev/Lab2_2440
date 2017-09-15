@@ -14,6 +14,8 @@
 //volatile  uint8_t hissa;
 
 void main(void)
+
+
 {
 //    hissa =20;
     uint8_t test =54;
@@ -28,10 +30,6 @@ void main(void)
 
 //  <CONFIGURE_TIMER>
 
-//    P1->SEL0 &= ~BIT7;
-//    P1->SEL1 &=~BIT7;
-//    P1->DIR |= BIT7;
-//    P1->OUT |= BIT7;
 
     while (1){
 //        if(P1->IN == ~BIT1){
