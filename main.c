@@ -25,12 +25,15 @@ void main(void)
 
     //GPIO_configure();
 
-  //  timer_a0_config();
+   timer_a0_config();
 
-    //__enable_irq();
+   timer_a0_configTimer1(320000);
 
-    rgbCycle();
+    __enable_irq();
 
+    while(1){
+    //rgbCycle();
+    }
 
 
 

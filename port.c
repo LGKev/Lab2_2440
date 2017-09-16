@@ -178,6 +178,7 @@ void rgbConfig(){
         P2->SEL0 &= ~(BIT0 | BIT1 | BIT2);
         P2->SEL1 &= ~(BIT0 | BIT1 | BIT2);
         P2->DIR  |= (BIT0 | BIT1 | BIT2);
+
         P2->OUT  &= ~(BIT0 | BIT1 | BIT2); //LOW
 
 }
@@ -188,12 +189,15 @@ void rgbCycle(){
     uint8_t color =0;
     uint32_t delay = 30000;
 
+    P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear
+
     for(color = 0; color < 7; color++){
-        P2->OUT |= P2->OUT + BIT0;
+        P2->OUT += BIT0;
+        //i wonder if a simple count would work?
         if(color == 7){
                 P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear;
           }
 
-                for(delay = 0; delay < 30000; delay++);
+                for(delay = 0; delay < 90000; delay++);
     }
 }
