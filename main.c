@@ -44,7 +44,7 @@ void main(void)
 //        if(P1->IN == ~BIT1){
 //            P1->OUT = BIT0;
 //        }
-        TIMER_A0->CCTL[1] |= CCIFG;
+      //  TIMER_A0->CCTL[1] |= CCIFG;
         //P1->OUT ^= BIT7;
       //  P1->OUT ^= BIT7;
     }
