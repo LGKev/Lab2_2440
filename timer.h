@@ -9,9 +9,9 @@
 #define TIMER_H_
 
 
-
 void timer_a0_config(void);
 
 
+void sysTickConfig(void);
 
 #endif /* TIMER_H_ */

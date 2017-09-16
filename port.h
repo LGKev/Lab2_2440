@@ -31,7 +31,46 @@ void GPIO_configure(void);
  * toggles 20 times.
  * */
 void testLED1(void);
+
+/* Takes no parameters
+ * returns nothing
+ *
+ * Used to configure onboard RGB led.
+ *
+ * */
+void rgbConfig(void);
+
+/* Takes no parameters
+ * Returns nothing
+ *
+ * Used to test RGB led to check config.
+ * uses for loop as delay.
+ * */
 void testRGB(void);
+
+/*
+ * Takes no parameters
+ * Returns nothing
+ * Used to test the interrupt latency on Port 1 Pin 7.
+ * */
+void latencyTestP1(void);
+
+
+/*
+ * Takes no parameters
+ * Returns nothing
+ * Used to test the interrupt latency on Port 4, pin 3.
+ * */
+void latencyTestP4(void);
+
+
+/* Takes no Parameters
+ * Returns nothing
+ * cycles the RGB led one color at a time. Configures RGB
+ * Uses a for loop for delay,
+ * 7 colors + off
+ * */
+void rgbCycle(void);
 
 
 #endif /* PORT_H_ */

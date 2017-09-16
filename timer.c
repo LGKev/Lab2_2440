@@ -57,6 +57,10 @@ void TA0_0_IRQHandler(){
      //TIMER_A0->CTL &=  ~(TIMER_A_CTL_IFG );//CLEAR ANY FLAGS , did not clear the flag., try 1
   // TIMER_A0->CCTL[0] = 0; //try 2// definitly is touching CCTL[0]
    TIMER_A0->CTL &= ~TIMER_A_CTL_IFG;//not working iether to flip anything!
-
-
 }
+//
+//void sysTickConfig(){
+//    SysTick_Config(ticks)
+//}
+
+

@@ -16,16 +16,22 @@
 void main(void)
 
 
+
 {
+
 //    hissa =20;
-    uint8_t test =54;
+    uint32_t test =54;
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 
-    GPIO_configure();
+    //GPIO_configure();
 
-    timer_a0_config();
+  //  timer_a0_config();
 
-    __enable_irq();
+    //__enable_irq();
+
+    rgbCycle();
+
+
 
 
 //  <CONFIGURE_TIMER>

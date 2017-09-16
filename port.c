@@ -22,7 +22,7 @@ void GPIO_configure(void)
     P1->DIR |= BIT0;
     P1->OUT |= BIT0;  //on
 
-    testLED1(); //toggle 20 times visual  feedback
+   // testLED1(); //toggle 20 times visual  feedback
 
 
 //    /* Configure RGB led */
@@ -31,7 +31,7 @@ void GPIO_configure(void)
     P2->DIR  |= (BIT0 | BIT1 | BIT2);
     P2->OUT  |= (BIT0 | BIT1 | BIT2); //HIGH
 
-    testRGB();
+  //  testRGB();
 
 
 //    //data from encoder
@@ -78,6 +78,11 @@ void GPIO_configure(void)
 
 void PORT1_IRQHandler()
 {
+    //latency Test
+    P1->OUT ^= BIT7; //latency test pin.
+    //end of test pin.
+
+
     //P1->OUT &= ~BIT7; //make it low , test pin
     uint32_t h = 0;
 
@@ -99,7 +104,7 @@ void PORT1_IRQHandler()
  else if(P1IFG & BIT4){
      P1->IFG &= ~BIT4;
 
-     testRGB();
+    // testRGB();
 //         hissa++;
  }
     else{
@@ -131,4 +136,64 @@ void testRGB(){
    for(delays = 0; delays < 40000; delays++);
     }
    // P2->OUT = 0x0; //clear it!
+}
+
+void latencyTestP1(){
+    //Latency Test
+       P1->SEL0 &=~BIT7;
+       P1->SEL1 &=~BIT7;
+       P1->DIR |= BIT7;
+
+       P1->OUT |= BIT7;
+
+       P1->IFG |= BIT1;
+       //end of latency test.
+}
+
+void latencyTestP4(){
+    //Latency Test
+       P4->SEL0 &=~BIT3;
+       P4->SEL1 &=~BIT3;
+       P4->DIR |= BIT3;
+       P4->IFG &= ~BIT3;//clear the bit
+       P4->IES |= BIT3;//high to low, falling.
+       P4->IE |= BIT3; //interrupt enable.
+
+
+
+
+
+       P4->OUT |= BIT3;
+
+
+
+
+       P4->IFG |= BIT3; //need to make sure interrupt setup.
+       //end of latency test.
+}
+
+
+void rgbConfig(){
+ /* Configure RGB led */
+        P2->SEL0 &= ~(BIT0 | BIT1 | BIT2);
+        P2->SEL1 &= ~(BIT0 | BIT1 | BIT2);
+        P2->DIR  |= (BIT0 | BIT1 | BIT2);
+        P2->OUT  &= ~(BIT0 | BIT1 | BIT2); //LOW
+
+}
+
+
+void rgbCycle(){
+    rgbConfig();
+    uint8_t color =0;
+    uint32_t delay = 30000;
+
+    for(color = 0; color < 7; color++){
+        P2->OUT |= P2->OUT + BIT0;
+        if(color == 7){
+                P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear;
+          }
+
+                for(delay = 0; delay < 30000; delay++);
+    }
 }
