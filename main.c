@@ -25,15 +25,15 @@ void main(void)
 
     GPIO_configure();
 
-  timer_a0_config();
+ // timer_a0_config();
 
-   //timer_a0_configTimer1();
+   timer_a0_configTimer1();
 
     __enable_irq();
 
-    while(1){
-    //rgbCycle();
-    }
+//    while(1){
+//    //rgbCycle();
+//    }
 
 
 
@@ -44,6 +44,7 @@ void main(void)
 //        if(P1->IN == ~BIT1){
 //            P1->OUT = BIT0;
 //        }
+        TIMER_A0->CCTL[1] |= CCIFG;
         //P1->OUT ^= BIT7;
       //  P1->OUT ^= BIT7;
     }
