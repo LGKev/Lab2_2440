@@ -17,7 +17,7 @@ void timer_a0_config(void);
  * Parameters: CCR[1] value;
  *
  * */
-void timer_a0_configTimer1(uint32_t);
+void timer_a0_configTimer1();
 
 void sysTickConfig(void);
 
