@@ -60,7 +60,7 @@ void timer_a0_configTimer1(){
 
       //  TIMER_A0->R = 6 ;         // Reset count, set to 0 at begining
         TIMER_A0->CTL |= (TIMER_A_CTL_SSEL_OFS + TIMER_A_CTL_TASSEL_2 );// | (TIMER_A_CTL_IE_OFS + TIMER_A_CTL_IE );     //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
-        TIMER_A0->CTL |= (TIMER_A_CTL_ID_0);//+ TIMER_A_CTL_ID_OFS ; //DIVIDE BY 1
+        TIMER_A0->CTL |= (TIMER_A_CTL_ID__8);//+ TIMER_A_CTL_ID_OFS ; //DIVIDE BY 1
       //  TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG ); //(TIMER_A_CTL_IFG_OFS) + ~(TIMER_A_CTL_IFG );//CLEAR ANY FLAGS ,totally worked!!! this was the correct way to negate
         TIMER_A0->CCR[1] = 65500;    // Value to count to, from lab questions
         TIMER_A0->CCTL[1] |= (TIMER_A_CCTLN_CM__RISING + TIMER_A_CCTLN_CM_OFS); //added this at 9:12pm, maybe not capturing!
@@ -116,9 +116,18 @@ void TA0_0_IRQHandler(){
 
 //so this is the hanlder we need, but unforunately my flag isn't set still!
 void TA0_N_IRQHandler(){ //dedicated for 1-5? and so i guess Ta_0_0 is the handler specifically for cctl[0]
+
+    P2->OUT += 1; //shift instead of add!! <<
+                //i wonder if a simple count would work?
+                if(P2->OUT >= 0b00000111){
+                        P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear;
+                        P1->OUT ^= BIT7;
+                }
+
+
     if(TIMER_A0->CCTL[1] & CCIFG){
 
-        P2->OUT << 0b1; //shift instead of add!! <<
+        P2->OUT += 0b1; //shift instead of add!! <<
                  //i wonder if a simple count would work?
                  if(P2->OUT >= 0b00001000){
                          P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear;
