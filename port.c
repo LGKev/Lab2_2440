@@ -31,6 +31,7 @@ void GPIO_configure(void)
     P2->DIR  |= (BIT0 | BIT1 | BIT2);
     P2->OUT  |= (BIT0 | BIT1 | BIT2); //HIGH
 
+    P2->OUT &= ~(BIT0 | BIT1 | BIT2);;
   //  testRGB();
 
 
