@@ -20,14 +20,14 @@ void timer_a0_config(){
 
 
     TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
-    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
-    TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG );
-    TIMER_A0->CCR[0] = 32000;    // Value to count to, from lab questions
+    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+
+ //   TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG );
+    TIMER_A0->CCR[0] = 7500;    // Value to count to, from lab questions
     TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
     TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
 
 
-    TIMER_A0->CTL|=(TIMER_A_CTL_MC_OFS + TIMER_A_CTL_MC__UP );
 
 
     /* Enable Interrupts in the NVIC */
@@ -80,7 +80,7 @@ void TA0_0_IRQHandler(){
    }
 
        TIMER_A0->CTL &= ~TIMER_A_CTL_IFG;//moved here b/c i think it was clearing flags too early. only clear 1 flag a time.
-       TIMER_A0->CCTL[1] &= ~CCIFG;
+       TIMER_A0->CCTL[0] &= ~CCIFG;
 
 
 }
@@ -90,7 +90,9 @@ void TA0_N_IRQHandler(){ //dedicated for 1-5? and so i guess Ta_0_0 is the handl
 
     if(TIMER_A0->CCTL[1] & CCIFG){ //ABSOLUTELY necessary will not work otherwise.
 
-    P1->OUT ^=BIT0;
+        P1->OUT ^= BIT7;
+        P1->OUT ^=BIT0;
+
     }
 
     TIMER_A0->CTL &= ~TIMER_A_CTL_IFG;//moved here b/c i think it was clearing flags too early. only clear 1 flag a time.
