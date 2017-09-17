@@ -26,7 +26,7 @@ void main(void)
 
     GPIO_configure();
 
-  timer_a0_config();
+  //timer_a0_config();
 
   timer_a0_configTimer1();
 
