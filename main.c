@@ -3,6 +3,7 @@
 #include "timer.h"
 #include "port.h"
 
+//#TIMER_0 (1)
 
 
 /*
@@ -27,7 +28,7 @@ void main(void)
 
   timer_a0_config();
 
-   //timer_a0_configTimer1();
+  timer_a0_configTimer1();
 
     __enable_irq();
 
