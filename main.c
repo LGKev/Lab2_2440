@@ -25,9 +25,9 @@ void main(void)
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 
   GPIO_configure();
-  timer_a0_config();
+ timer_a0_config();
 
-  //timer_a0_configTimer1();
+ // timer_a0_configTimer1();
 
     __enable_irq();
 
