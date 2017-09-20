@@ -12,9 +12,11 @@
 
 extern count;
 
+#define RGB_INTERRUPT_CYCLE // Problem 4
 
-#define LATENCY_TEST
+#define LATENCY_TEST //Problem 3
 
+#define ENCODER_TEST // Problem 11
 
 
 void GPIO_configure(void)
@@ -70,7 +72,8 @@ void GPIO_configure(void)
     P1->IES |=   BIT4; //high to low
     P1->IE  |=   BIT4;
 
-//
+
+#ifdef LATENCY_TEST
     /* Configure Latency Test Output Pin */
   P1->SEL0 &= ~BIT7; //
   P1->SEL1 &= ~BIT7;
@@ -79,14 +82,17 @@ void GPIO_configure(void)
 //
     /* Enable Interrupts in the NVIC */
     NVIC_EnableIRQ(PORT1_IRQn);
+#endif
+
 }
 
 void PORT1_IRQHandler()
 {
+#ifdef LATENCY_TEST
     //latency Test
     P1->OUT ^= BIT7; //latency test pin.
     //end of test pin.
-
+#endif
 
 //    //P1->OUT &= ~BIT7; //make it low , test pin
 //    uint32_t h = 0;
@@ -232,7 +238,7 @@ void encoderInterruptConfig(){
 }
 
 void PORT2_IRQHandler(){
-
+//systick measurement
     //pin highh
     if(P2IFG & BIT5){
         P1->OUT ^=BIT7;
