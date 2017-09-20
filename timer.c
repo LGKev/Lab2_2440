@@ -8,8 +8,9 @@
 #include "timer.h"
 #include "msp.h"
 
-#define DEBUG_ME (2)
-#define PROBLEM10 (1)
+#define DEBUG_ME
+#define RGB_TIMER_CYCLE_CONFIG //sets up interrupt for 500ms cycle of RGB.
+#define RGB_TIMER_CYCLE
 
 
 /* Problem 5a, defines */
@@ -17,48 +18,40 @@
 //#define TIMER_40000         (1)
 //#define TIMER_20000
 #define TIMER_1000
-
+//#define TIMER_A_TEST //used to test a toggle of P1.7 with presets from TIMER A config.
 //#define TIMER_EXPANDER
 
-
-void timer_a0_config(){
+void timer_a0_config()
+{
     __disable_irq();
 #ifdef PROBLEM9
-    TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
-    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
+    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;//UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
 
-    TIMER_A0->CCR[0] = 4726;    // Value to count to, from lab questions
-    TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
-    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
-    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
+    TIMER_A0->CCR[0] = 4726;// Value to count to, from lab questions
+    TIMER_A0->CCTL[0] &= ~CCIFG;//clear compare captture flag
+    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE;// INTERRUPT INABLE CAPTURE COMPARE
+    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7;//divide by 8
 #endif
 
-
-#ifdef PROBLEM10
-    TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
-    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+#ifdef RGB_TIMER_CYCLE_CONFIG
+    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
+    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | TIMER_A_CTL_ID__8
+            | TIMER_A_CTL_MC__STOP;  //stop MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
 
     TIMER_A0->CCR[0] = 11812;    // Value to count to, from lab questions
     TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
-    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
+    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE; // INTERRUPT INABLE CAPTURE COMPARE
     TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
 #endif
 
     /* Enable Interrupts in the NVIC */
-      NVIC_EnableIRQ(TA0_0_IRQn);
-
-
-
-
+    NVIC_EnableIRQ(TA0_0_IRQn);
 }
 
-
-
-
-void timer_a0_configTimer1(){
+void timer_a0_configTimer1()
+{
     __disable_irq();
-
-
 
 //
 //
@@ -80,80 +73,72 @@ void timer_a0_configTimer1(){
 ////            TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
 ////#endif
 
-            TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
-            TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__1| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
+    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | TIMER_A_CTL_ID__1
+            | TIMER_A_CTL_MC__UP;  //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
 
-            //   TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG );
+    //   TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG );
 
 #ifdef TIMER_65000
-               TIMER_A0->CCR[0] = 65000;    // Value to count to, from lab questions
+    TIMER_A0->CCR[0] = 65000;    // Value to count to, from lab questions
 #endif
 
 #ifdef TIMER_40000
-               TIMER_A0->CCR[0] = 40000;    // Value to count to, from lab questions
+    TIMER_A0->CCR[0] = 40000;    // Value to count to, from lab questions
 #endif
 
 #ifdef TIMER_20000
-               TIMER_A0->CCR[0] = 20000;    // Value to count to, from lab questions
+    TIMER_A0->CCR[0] = 20000;    // Value to count to, from lab questions
 #endif
 //#ifdef TIMER_1000
 //               TIMER_A0->CCR[0] = 1000;    // Value to count to, from lab questions
 //#endif
 
-               TIMER_A0->CCR[1] = 1000;    // Value to count to, from lab questions
+    TIMER_A0->CCR[1] = 1000;    // Value to count to, from lab questions
 
+    TIMER_A0->CCTL[1] &= ~CCIFG; //clear compare captture flag
+    TIMER_A0->CCTL[1] |= TIMER_A_CCTLN_CCIE; // INTERRUPT INABLE CAPTURE COMPARE
 
-               TIMER_A0->CCTL[1] &= ~CCIFG; //clear compare captture flag
-               TIMER_A0->CCTL[1] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
-
-
-
-
-
-              NVIC_EnableIRQ(TA0_N_IRQn);
+    NVIC_EnableIRQ(TA0_N_IRQn);
 }
 
+void TA0_0_IRQHandler() //basically used only to cycle led colors
+{
 
-void TA0_0_IRQHandler(){
-    //everytime the timer compare capture, this code execcutes
+#ifdef RGB_TIMER_CYCLE
+    TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
 
-    //P1->OUT ^= BIT0; //blink red led.
-//idk google it
-    //cctl[1] has its own section!!!! jfc.
+    P2OUT++;
 
-    if(TIMER_A0->CCTL[0] & CCIFG){ //had cct[1] here and so thats why it was working. incorrect amazing how much can be wrong AND STILL WORK.
-
-        P1->OUT^=BIT7;
-//             P2->OUT += BIT0; //shift instead of add!! <<
-//             //i wonder if a simple count would work?
-//             if(P2->OUT >= 0b11111111){
-//                     P2->OUT &= ~(BIT0 | BIT1 | BIT2); //clear;
-//                     P1->OUT ^= BIT7;
-//             }
+  if(P2OUT > 8){
+      P2OUT  = 0; //reset to off.
+      TIMER_A0->CCR[0] = 0; //stop that timer.
+  }
 
 
-   }
+#endif
 
-
-       TIMER_A0->CTL &= ~TIMER_A_CTL_IFG;//moved here b/c i think it was clearing flags too early. only clear 1 flag a time.
-       TIMER_A0->CCTL[0] &= ~CCIFG;
-
+#ifdef TIMER_A_TEST
+         P1->OUT ^= BIT7;
+         TIMER_A0->CCTL[0] &= ~CCIFG;
+#endif
 
 }
 
 //so this is the hanlder we need, but unforunately my flag isn't set still!
-void TA0_N_IRQHandler(){ //dedicated for 1-5? and so i guess Ta_0_0 is the handler specifically for cctl[0]
+void TA0_N_IRQHandler()
+{ //dedicated for 1-5? and so i guess Ta_0_0 is the handler specifically for cctl[0]
     P1->OUT ^= BIT7;
 
-
-    if(TIMER_A0->CCTL[1] & CCIFG){ //ABSOLUTELY necessary will not work otherwise.
+    if (TIMER_A0->CCTL[1] & CCIFG)
+    { //ABSOLUTELY necessary will not work otherwise.
 
         P1->OUT ^= BIT7;
-        P1->OUT ^=BIT0;
+        P1->OUT ^= BIT0;
 
     }
 
-    TIMER_A0->CTL &= ~TIMER_A_CTL_IFG;//moved here b/c i think it was clearing flags too early. only clear 1 flag a time.
+    TIMER_A0->CTL &= ~TIMER_A_CTL_IFG; //moved here b/c i think it was clearing flags too early. only clear 1 flag a time.
 
     TIMER_A0->CCTL[1] &= ~CCIFG;
 

@@ -4,7 +4,7 @@
 #include "port.h"
 
 //#define SYS_TICK_MEASUREMENT
-//#define TIMER_A_CCR0 //
+#define TIMER_A_CCR0 // set up for timer A ccr0 used mainly for RGB cycle 500ms
 //#define TIMER_A_CCR1 //
 
 
@@ -35,6 +35,8 @@
 volatile uint32_t count = 0;
 volatile uint32_t currentVal = 21;
 volatile uint32_t currentVal2 = 53;
+
+
 
 void main(void)
 {

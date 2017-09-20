@@ -18,7 +18,9 @@ extern count;
  *                  RFB_SWITCH_CYCLE
  * ====================================================================================
  */
-#define RGB_SWITCH_CYCLE // Problem 4 - CYCLES WITH button press. ++ and --
+//#define RGB_SWITCH_CYCLE // Problem 4 - CYCLES WITH button press. ++ and --
+#define RGB_TIMER_CYCLE
+
 
 /*====================================================================================
  * Additional Tests Not for Demo
@@ -82,6 +84,8 @@ void GPIO_configure(void)
 
 void PORT1_IRQHandler()
 {
+
+
 #ifdef LATENCY_TEST
     //latency Test
     P1->OUT ^= BIT7;//latency test pin.
@@ -131,6 +135,21 @@ void PORT1_IRQHandler()
 
 #ifdef LATENCY_TEST
     P1->OUT &= ~BIT7; //low
+#endif
+
+#ifdef  RGB_TIMER_CYCLE
+    uint16_t wait = 0;
+    for (wait = 0; wait <= 25000; wait++);
+
+    //disable interrupts
+    //setup the timer and start it.
+    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
+    TIMER_A0->CTL |= TIMER_A_CTL_MC__UP; //start that timer.
+
+    TIMER_A0->CCR[0] =11812;
+
+    P1IFG = 0; // clear flags.
+
 #endif
 
 }
