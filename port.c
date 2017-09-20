@@ -10,7 +10,11 @@
 #include "msp.h"
 #include <stdint.h>
 
-volatile extern uint8_t hissa;
+extern count;
+
+
+#define LATENCY_TEST
+
 
 
 void GPIO_configure(void)
@@ -84,37 +88,42 @@ void PORT1_IRQHandler()
     //end of test pin.
 
 
-    //P1->OUT &= ~BIT7; //make it low , test pin
-    uint32_t h = 0;
+//    //P1->OUT &= ~BIT7; //make it low , test pin
+//    uint32_t h = 0;
+//
+//
+//    //P1->OUT = ~BIT0;
+//
+//    //PART 4. DEMO TO TA
+// if(P1IFG & BIT1){
+//        //DO STUFF FOR RIGHT BUTTON
+//
+//        P1->OUT ^= BIT0;
+//        for (h = 0; h < 305000; h++){
+//
+//        }
+//        P1->IFG &= ~BIT1; //clear the flag you jackass
+//
+////       hissa--;
+//    }
+// else if(P1IFG & BIT4){
+//     P1->IFG &= ~BIT4;
+//
+//    // testRGB();
+////         hissa++;
+// }
+//    else{
+//        //
+//    }
+//
+//    //toggle the LED
+// //THIS IS CAUSING THE DOUBLE FLIP?
+//// P1->OUT &= ~BIT7;
+//
+//#ifdef LATENCY_TEST
+// P1->OUT &= ~BIT7; //low
+//#endif
 
-
-    //P1->OUT = ~BIT0;
-
-    //PART 4. DEMO TO TA
- if(P1IFG & BIT1){
-        //DO STUFF FOR RIGHT BUTTON
-
-        P1->OUT ^= BIT0;
-        for (h = 0; h < 305000; h++){
-
-        }
-        P1->IFG &= ~BIT1; //clear the flag you jackass
-
-//       hissa--;
-    }
- else if(P1IFG & BIT4){
-     P1->IFG &= ~BIT4;
-
-    // testRGB();
-//         hissa++;
- }
-    else{
-        //
-    }
-
-    //toggle the LED
- //THIS IS CAUSING THE DOUBLE FLIP?
-// P1->OUT &= ~BIT7;
 }
 
 void testLED1(){
@@ -201,4 +210,35 @@ void rgbCycle(){
 
                 for(delay = 0; delay < 90000; delay++);
     }
+}
+
+
+void encoderInterruptConfig(){
+    P2SEL0 &= ~BIT5; //gpio
+    P2SEL1 &= ~BIT5;
+
+    //set up for pull down
+
+       P2->REN |= BIT5;
+       P2->OUT &= ~BIT5;
+       P2->IFG &= ~BIT5; //interrupt flag to be cleared first
+       P1->IES &= ~BIT5; //high to low trigger
+       P2->IE |= BIT5;
+
+
+    P2DIR &= ~BIT5; //PIN 5 INPUT
+
+    NVIC_EnableIRQ(PORT2_IRQn);
+}
+
+void PORT2_IRQHandler(){
+
+    //pin highh
+    if(P2IFG & BIT5){
+        P1->OUT ^=BIT7;
+        count++;
+        P2->IFG &=~BIT5;
+    }
+
+   // pin low
 }

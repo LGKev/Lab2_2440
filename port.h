@@ -8,8 +8,6 @@
 #ifndef PORT_H_
 #define PORT_H_
 
-#define LEFT_INTERRUPT_BUTTON              (BIT1)
-#define RIGHT_INTERRUPT_BUTTON             (BIT4)
 
 
 /*
@@ -72,5 +70,13 @@ void latencyTestP4(void);
  * */
 void rgbCycle(void);
 
+/*
+ * Takes no parameters
+ * Iterates global variable COUNT each trigger of interrupt
+ * Port 2 pin 5
+ * LOW to HIGH trigger
+ *
+ * */
+void encoderInterruptConfig(void);
 
 #endif /* PORT_H_ */

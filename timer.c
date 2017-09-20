@@ -9,6 +9,8 @@
 #include "msp.h"
 
 #define DEBUG_ME (2)
+#define PROBLEM10 (1)
+
 
 /* Problem 5a, defines */
 //#define TIMER_65000                     (1)
@@ -21,22 +23,31 @@
 
 void timer_a0_config(){
     __disable_irq();
-
-
+#ifdef PROBLEM9
     TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
     TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
 
- //   TIMER_A0->CTL &= ~(TIMER_A_CTL_IFG );
     TIMER_A0->CCR[0] = 4726;    // Value to count to, from lab questions
     TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
     TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
+    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
+#endif
 
-  //  TIMER_A0->EX0 |= TIMER_A_EX0_IDEX__8;
 
-         TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
+#ifdef PROBLEM10
+    TIMER_A0->R = 0 ;         // Reset count, set to 0 at begining
+    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;    //UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+
+    TIMER_A0->CCR[0] = 11812;    // Value to count to, from lab questions
+    TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
+    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE ;   // INTERRUPT INABLE CAPTURE COMPARE
+    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
+#endif
 
     /* Enable Interrupts in the NVIC */
       NVIC_EnableIRQ(TA0_0_IRQn);
+
+
 
 
 }
@@ -107,7 +118,7 @@ void TA0_0_IRQHandler(){
     //everytime the timer compare capture, this code execcutes
 
     //P1->OUT ^= BIT0; //blink red led.
-
+//idk google it
     //cctl[1] has its own section!!!! jfc.
 
     if(TIMER_A0->CCTL[0] & CCIFG){ //had cct[1] here and so thats why it was working. incorrect amazing how much can be wrong AND STILL WORK.
