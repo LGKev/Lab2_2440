@@ -3,14 +3,26 @@
 #include "timer.h"
 #include "port.h"
 
-#define TIMER_0
-#define SYS_TICK_MEASUREMENT
-#define ENCODER_TEST
+//#define SYS_TICK_MEASUREMENT
+//#define TIMER_A_CCR0 //
+//#define TIMER_A_CCR1 //
 
-#define N_ROTATIONS_INTERRUPT // lights led when N rotations have been triggered (14*5 = 70 interrupts)
-#define N_INTERRUPTS        (70) //problem
 
-//#define LATENCY_TEST
+ /* ====================================================================================
+  * Defines for Encoder
+  * Encoder Test is for getting the square wave to trigger IR input.
+  * ====================================================================================
+  * */
+//#define N_ROTATIONS_INTERRUPT // lights led when N rotations have been triggered (14*5 = 70 interrupts)
+//#define N_INTERRUPTS        (70) //problem
+//#define ENCODER_CONFIG
+
+
+/*====================================================================================
+ * Additional Tests Not for Demo
+ * ====================================================================================
+ * /
+//#define LATENCY_TEST //Problem 3
 //#define GLOBAL_COUNT_TEST // checks to see global variable works
 
 
@@ -27,26 +39,30 @@ volatile uint32_t currentVal2 = 53;
 void main(void)
 {
 
-//    hissa =20;
-    uint32_t test =54;
+
     WDT_A->CTL = WDT_A_CTL_HOLD | WDT_A_CTL_PW;
 
   GPIO_configure();
-// timer_a0_config();
 
- // timer_a0_configTimer1();
+#ifdef TIMER_A_CCR0
+  timer_a0_config();
+#endif
 
+#ifdef TIMER_A_CCR1
+ timer_a0_configTimer1();
+#endif
 
 #ifdef SYS_TICK_MEASUREMENT
   SysTick_Config(1000000000);// 1 billi
   SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Pos | SysTick_CTRL_ENABLE_Msk;
 
   SysTick->LOAD = 535353;
-#endif
-    __enable_irq();
 
-    currentVal = SysTick->VAL;
-#ifdef ENCODER_TEST
+  currentVal = SysTick->VAL;
+
+#endif
+
+#ifdef ENCODER_CONFIG
     encoderInterruptConfig();
 #endif
 
@@ -84,6 +100,11 @@ void main(void)
     }
 
 #endif
+
+
+    __enable_irq();
+
+    while(1);
 
 }
 
