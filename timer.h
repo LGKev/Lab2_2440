@@ -8,13 +8,17 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-
-void timer_a0_config(void);
-
 /* Configures the timer for rgb cycling.
  * uses CCR[1] as the compare capture value;
  *
- * Parameters: CCR[1] value;
+ * changes: CCR[0] value;
+ *
+ * */
+void timer_a0_config(void);
+
+/*
+ * Configured this to determine what ccr[1] values due
+ * for a clock and how it affects the p1.7 output
  *
  * */
 void timer_a0_configTimer1();

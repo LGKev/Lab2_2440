@@ -9,27 +9,11 @@
 #include "port.h"
 #include "msp.h"
 #include <stdint.h>
+#include "demoDefines.h"
 
 extern count;
+extern totalCount; // distance counter forever.
 
-/*====================================================================================
- * Defines for Demos
- *          1) RGB Color Shift
- *                  RFB_SWITCH_CYCLE
- * ====================================================================================
- */
-//#define RGB_SWITCH_CYCLE // Problem 4 - CYCLES WITH button press. ++ and --
-#define RGB_TIMER_CYCLE
-
-
-/*====================================================================================
- * Additional Tests Not for Demo
- * ====================================================================================
- */
-//#define LATENCY_TEST                  // Problem 3
-//#define ENCODER_TEST                  // Problem 11
-//#define PORT_1_FOR_DEBOUNCE           // Interrupt with for loop delay
-//#define PORT_1_BOUNCE                 // Interrupt without for loop delay
 void GPIO_configure(void)
 {
 
@@ -96,9 +80,7 @@ void PORT1_IRQHandler()
     uint32_t h = 0;
     P1->OUT ^= BIT0;
     for (h = 0; h < 10000; h++);
-#endif
-
-#ifdef PORT_1_BOUNCE
+#else
     P1->OUT ^= BIT0;
 #endif
 
@@ -129,7 +111,8 @@ void PORT1_IRQHandler()
         else
         {
             P2OUT--;
-        }
+        }//#define RGB_TIMER_CYCLE
+
     }
 #endif
 
@@ -154,95 +137,7 @@ void PORT1_IRQHandler()
 
 }
 
-void testLED1()
-{
-    //led test red
-    uint16_t delays = 0;
-    uint8_t test = 0;
-    for (test = 0; test < 20; test++)
-    {
-        P1->OUT ^= BIT0;
-        for (delays = 0; delays < 10000; delays++)
-            ;
-    }
-}
-
-void testRGB()
-{
-    uint8_t color = 0b00000000;
-    uint32_t delays = 0;
-    uint8_t index = 0;
-    for (index = 0; index < 8; index++)
-    {
-        P2->OUT ^= BIT1 | BIT2 | BIT3;
-        for (delays = 0; delays < 40000; delays++)
-            ;
-    }
-    // P2->OUT = 0x0; //clear it!
-}
-
-void latencyTestP1()
-{
-    //Latency Test
-    P1->SEL0 &= ~BIT7;
-    P1->SEL1 &= ~BIT7;
-    P1->DIR |= BIT7;
-
-    P1->OUT |= BIT7;
-
-    P1->IFG |= BIT1;
-    //end of latency test.
-}
-
-void latencyTestP4()
-{
-    //Latency Test
-    P4->SEL0 &= ~BIT3;
-    P4->SEL1 &= ~BIT3;
-    P4->DIR |= BIT3;
-    P4->IFG &= ~BIT3; //clear the bit
-    P4->IES |= BIT3; //high to low, falling.
-    P4->IE |= BIT3; //interrupt enable.
-
-    P4->OUT |= BIT3;
-
-    P4->IFG |= BIT3; //need to make sure interrupt setup.
-    //end of latency test.
-}
-
-void rgbConfig()
-{
-    /* Configure RGB led */
-    P2->SEL0 &= ~(BIT0 | BIT1 | BIT2 );
-    P2->SEL1 &= ~(BIT0 | BIT1 | BIT2 );
-    P2->DIR |= (BIT0 | BIT1 | BIT2 );
-
-    P2->OUT &= ~(BIT0 | BIT1 | BIT2 ); //LOW
-
-}
-
-void rgbCycle()
-{
-    rgbConfig();
-    uint8_t color = 0;
-    uint32_t delay = 30000;
-
-    P2->OUT &= ~(BIT0 | BIT1 | BIT2 ); //clear
-
-    for (color = 0; color < 7; color++)
-    {
-        P2->OUT += BIT0;
-        //i wonder if a simple count would work?
-        if (color == 7)
-        {
-            P2->OUT &= ~(BIT0 | BIT1 | BIT2 ); //clear;
-        }
-
-        for (delay = 0; delay < 90000; delay++)
-            ;
-    }
-}
-
+#ifdef ENCODER_CONFIG
 void encoderInterruptConfig()
 {
     P2SEL0 &= ~BIT5; //gpio
@@ -260,18 +155,76 @@ void encoderInterruptConfig()
 
     NVIC_EnableIRQ(PORT2_IRQn);
 }
+#endif
 
 //handler for encoder input, on PORT 2 pin 5.
 void PORT2_IRQHandler()
 {
-//systick measurement
+//systick measurement & for encoder
     //pin highh
+
+#ifdef ENCODER_TEST_IR
     if (P2IFG & BIT5)
     {
-        P1->OUT ^= BIT7;
+     //   P1->OUT ^= BIT7;
         count++;
+        totalCount++;
         P2->IFG &= ~BIT5;
     }
-
+#endif
     // pin low
 }
+
+
+
+
+
+
+/*====================================================================================
+ * Additional Tests Not for Demo
+ * ====================================================================================
+ */
+void testLED1()
+{
+    //led test red
+    uint16_t delays = 0;
+    uint8_t test = 0;
+    for (test = 0; test < 20; test++)
+    {
+        P1->OUT ^= BIT0;
+        for (delays = 0; delays < 10000; delays++)
+            ;
+    }
+}
+//extra
+void testRGB()
+{
+    uint8_t color = 0b00000000;
+    uint32_t delays = 0;
+    uint8_t index = 0;
+    for (index = 0; index < 8; index++)
+    {
+        P2->OUT ^= BIT1 | BIT2 | BIT3;
+        for (delays = 0; delays < 40000; delays++)
+            ;
+    }
+    // P2->OUT = 0x0; //clear it!
+}
+
+//extra
+void latencyTestP4()
+{
+    //Latency Test
+    P4->SEL0 &= ~BIT3;
+    P4->SEL1 &= ~BIT3;
+    P4->DIR |= BIT3;
+    P4->IFG &= ~BIT3; //clear the bit
+    P4->IES |= BIT3; //high to low, falling.
+    P4->IE |= BIT3; //interrupt enable.
+
+    P4->OUT |= BIT3;
+
+    P4->IFG |= BIT3; //need to make sure interrupt setup.
+    //end of latency test.
+}
+

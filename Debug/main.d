@@ -12,6 +12,7 @@ main.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 main.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h
 main.obj: ../timer.h
 main.obj: ../port.h
+main.obj: ../demoDefines.h
 
 ../main.c: 
 /home/kk/ti/ccsv7/ccs_base/arm/include/msp.h: 
@@ -25,3 +26,4 @@ main.obj: ../port.h
 /home/kk/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h: 
 ../timer.h: 
 ../port.h: 
+../demoDefines.h: 

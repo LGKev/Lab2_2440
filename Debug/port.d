@@ -11,6 +11,7 @@ port.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/msp432p401r_classic.h
 port.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/CMSIS/core_cm4.h
 port.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 port.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h
+port.obj: ../demoDefines.h
 
 ../port.c: 
 ../port.h: 
@@ -23,3 +24,4 @@ port.obj: /home/kk/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h
 /home/kk/ti/ccsv7/ccs_base/arm/include/CMSIS/core_cm4.h: 
 /home/kk/ti/ccsv7/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 /home/kk/ti/ccsv7/ccs_base/arm/include/system_msp432p401r.h: 
+../demoDefines.h: 

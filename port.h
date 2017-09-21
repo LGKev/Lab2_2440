@@ -46,12 +46,6 @@ void rgbConfig(void);
  * */
 void testRGB(void);
 
-/*
- * Takes no parameters
- * Returns nothing
- * Used to test the interrupt latency on Port 1 Pin 7.
- * */
-void latencyTestP1(void);
 
 
 /*
