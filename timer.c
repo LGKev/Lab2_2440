@@ -16,22 +16,23 @@ void timer_a0_config()
     TIMER_A0->R = 0;         // Reset count, set to 0 at begining
     TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2|TIMER_A_CTL_ID__8| TIMER_A_CTL_MC__UP;//UP MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
 
-    TIMER_A0->CCR[0] = 4726;// Value to count to, from lab questions
+    TIMER_A0->CCR[0] = 4727;// Value to count to, from lab questions 4727;
     TIMER_A0->CCTL[0] &= ~CCIFG;//clear compare captture flag
     TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE;// INTERRUPT INABLE CAPTURE COMPARE
     TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7;//divide by 8
+
 #endif
 
-#ifdef RGB_TIMER_CYCLE_CONFIG
-    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
-    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | TIMER_A_CTL_ID__8
-            | TIMER_A_CTL_MC__STOP;  //stop MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
-
-    TIMER_A0->CCR[0] = 11812;    // Value to count to, from lab questions
-    TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
-    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE; // INTERRUPT INABLE CAPTURE COMPARE
-    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
-#endif
+//#ifdef RGB_TIMER_CYCLE_CONFIG
+//    TIMER_A0->R = 0;         // Reset count, set to 0 at begining
+//    TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | TIMER_A_CTL_ID__8
+//            | TIMER_A_CTL_MC__STOP;  //stop MODE, SOURCE SEL SMCLK, INTERRUPT ENABLE
+//
+//    TIMER_A0->CCR[0] = 11812;    // Value to count to, from lab questions
+//    TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
+//    TIMER_A0->CCTL[0] |= TIMER_A_CCTLN_CCIE; // INTERRUPT INABLE CAPTURE COMPARE
+//    TIMER_A0->EX0 = TIMER_A_EX0_TAIDEX_7; //divide by 8
+//#endif
 
     /* Enable Interrupts in the NVIC */
     NVIC_EnableIRQ(TA0_0_IRQn);
@@ -69,7 +70,7 @@ void timer_a0_configTimer1()
 void TA0_0_IRQHandler() //basically used only to cycle led colors
 {
 
-#ifdef RGB_TIMER_CYCLE
+#ifdef RGB_TIMER_CYCLE_CONFIG
     TIMER_A0->CCTL[0] &= ~CCIFG; //clear compare captture flag
 
     P2OUT++;
@@ -89,6 +90,8 @@ void TA0_0_IRQHandler() //basically used only to cycle led colors
 
 #ifdef PROBLEM_9
          P1->OUT ^= BIT7;
+         P1->OUT ^= BIT0;
+
          TIMER_A0->CCTL[0] &= ~CCIFG;
 #endif
 

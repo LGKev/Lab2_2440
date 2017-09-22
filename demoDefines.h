@@ -34,7 +34,7 @@
 //#define TIMER_1000
 
 #define PROBLEM_9                       // 5 hZ SQUARE WAVE
-//#define PROBLEM_10                      // TIMER FOR RGB
+#define PROBLEM_10                      // TIMER FOR RGB
 //#define PROBLEM_11                      // ENCODER
 
 //#define CALCULATE_DISTANCE              // calculate distance
@@ -67,6 +67,7 @@
 #endif
 
 #ifdef PROBLEM_10
+#define RGB_TIMER_CYCLE_CONFIG
 #define RGB_TIMER_CYCLE
 #define TIMER_A_CCR0                   //sets up timer a interrupts
 #endif

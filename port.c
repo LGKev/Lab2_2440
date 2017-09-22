@@ -53,7 +53,6 @@ void GPIO_configure(void)
     P1->IES |= BIT4; //high to low
     P1->IE |= BIT4;
 
-#ifdef LATENCY_TEST
     /* Configure Latency Test Output Pin */
     P1->SEL0 &= ~BIT7; //
     P1->SEL1 &= ~BIT7;
@@ -61,7 +60,6 @@ void GPIO_configure(void)
     P1->OUT |= BIT7;
 //
     /* Enable Interrupts in the NVIC */
-#endif
     NVIC_EnableIRQ(PORT1_IRQn);
 
 }
